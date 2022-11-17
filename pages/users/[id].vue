@@ -27,7 +27,7 @@ const { data: posts } = await useFetch<postData[]>(`https://jsonplaceholder.typi
 <style lang="scss" scoped>
 .grid {
     display: grid;
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr 1fr 1fr;
     grid-gap: 1em;
     align-items: center;
     justify-content: center;
