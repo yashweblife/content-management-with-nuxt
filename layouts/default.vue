@@ -1,21 +1,6 @@
 <template>
     <div>
-        <header>
-            <h1>Nuxt Post</h1>
-            <nav>
-                <ul>
-                    <li>
-                        <NuxtLink to="/">Home</NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/about">About</NuxtLink>
-                    </li>
-                    <li>
-                        <NuxtLink to="/about">Users</NuxtLink>
-                    </li>
-                </ul>
-            </nav>
-        </header>
+        <Header title="V0.0.1"/>
         <div>
             <slot />
         </div>
