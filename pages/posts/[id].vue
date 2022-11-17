@@ -1,25 +1,32 @@
 <template>
     <div>
-        <div class="card">
-            <div class="header">
+        <details class="card">
+            <summary class="header">
                 <h2>
                     {{post.title}}
                 </h2>
                 <p>
                     {{post.body}}
                 </p>
-            </div>
+            </summary>
             <div class="content">
+                <h4>Comments</h4>
                 <div class="card" v-for="comment in comments" :key="comment.id">
                     <div class="header">
-                        {{comment.name}}
+                        <div class="image"></div>
+                        <div class="name">{{comment.email}}</div>
                     </div>
                     <div class="content">
-                        {{comment.body}}
+                        <h4>
+                            {{comment.name}}
+                        </h4>
+                        <p>
+                            {{comment.body}}
+                        </p>
                     </div>
                 </div>
             </div>
-        </div>
+        </details>
     </div>
 </template>
 
@@ -38,7 +45,8 @@ type postData = {
 type commentData = {
     id:number,
     name:string,
-    body:string
+    body:string,
+    email:string
 }
 const {data:post}= await useFetch<postData>(`https://jsonplaceholder.typicode.com/posts/${id}`)
 const {data:comments}= await useFetch<commentData[]>(`https://jsonplaceholder.typicode.com/comments?postId=${id}`)
@@ -50,5 +58,22 @@ const {data:comments}= await useFetch<commentData[]>(`https://jsonplaceholder.ty
     border-radius: 0.5em;
     box-shadow: 0 0 1em 0 rgba(0,0,0,0.5);
     margin:1em;
+    width:50%;
+    >summary.header{
+        margin-bottom:1em;
+    }
+    >div.header{
+        display:flex;
+        align-items: center;
+        >.name{
+            margin-left: 2em;
+        }
+        >.image{
+            width:50px;
+            aspect-ratio: 1/1;
+            border-radius: 50%;
+            background-color: rgba(0,0,0,0.5);
+        }
+    }
     }
 </style>
