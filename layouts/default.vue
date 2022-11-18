@@ -19,27 +19,7 @@
     padding: 0;
 }
 
-header {
-    width: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    padding: 1em 2em;
 
-    >nav {
-        width: 50%;
-
-        >ul {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-
-            >li {
-                list-style-type: none;
-            }
-        }
-    }
-}
 
 a {
     text-decoration: none;
