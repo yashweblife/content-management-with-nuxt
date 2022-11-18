@@ -12,20 +12,7 @@
             porro reprehenderit doloribus.
         </p>
         <div class="grid">
-            <NuxtLink class="card" v-for="user in users" :key="user.id" :to="`users/${''+   user.id}`">
-                <div class="header">
-                    <div class="image"></div>
-                    <div class="name">
-                        {{ user.name }}
-                    </div>
-                </div>
-                <div class="content">
-                    <div class="info">
-                        <p>{{ user.company.name }}</p>
-                        <p>{{ user.company.bs }}</p>
-                    </div>
-                </div>
-            </NuxtLink>
+            <UserCard v-for="user in users" :key="user.id" :to="`users/${'' + user.id}`" :user="user" />
         </div>
     </div>
 </template>
@@ -49,41 +36,96 @@ const { data: users } = await useFetch<apiRef[]>('https://jsonplaceholder.typico
 
 <style lang="scss" scoped>
 h2 {
-    font-size: 1.5em;
-    padding: 1em 2em;
+    padding: 0 2em;
+    text-align: center;
+    line-height: 2em;
 }
 
 p {
-    padding: 0em 2em;
+    padding: 0 2em;
+    text-align: center;
+    line-height: 1.3em;
 }
 
 .grid {
     width: 100%;
     display: grid;
-    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-columns: 1fr;
     grid-gap: 1em;
-    padding:2em;
+    padding: 2em;
+
     >.card {
         display: flex;
         flex-direction: column;
-        box-shadow: 0 0 1em 0 rgba(0,0,0,0.3);
-        padding:1em;
+        box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+        padding: 1em;
         border-radius: 1em;
-        .header{
+
+        .header {
             display: flex;
             align-items: center;
             margin-bottom: 1em;
-            .image{
+
+            .image {
                 width: 50px;
                 aspect-ratio: 1/1;
-                background-color: rgba(0,0,0,0.3);
+                background-color: rgba(0, 0, 0, 0.3);
                 border-radius: 50%;
             }
-            .name{
+
+            .name {
                 margin-left: 2em;
             }
+
             font-size: 1.2em;
         }
     }
+}
+
+@media screen and (min-width: 800px) {
+    h2 {
+        font-size: 1.5em;
+        padding: 1em 2em;
+    }
+
+    p {
+        padding: 1em 2em;
+    }
+
+    .grid {
+        width: 100%;
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        grid-gap: 1em;
+        padding: 2em;
+
+        >.card {
+            display: flex;
+            flex-direction: column;
+            box-shadow: 0 0 1em 0 rgba(0, 0, 0, 0.3);
+            padding: 1em;
+            border-radius: 1em;
+
+            .header {
+                display: flex;
+                align-items: center;
+                margin-bottom: 1em;
+
+                .image {
+                    width: 50px;
+                    aspect-ratio: 1/1;
+                    background-color: rgba(0, 0, 0, 0.3);
+                    border-radius: 50%;
+                }
+
+                .name {
+                    margin-left: 2em;
+                }
+
+                font-size: 1.2em;
+            }
+        }
+    }
+
 }
 </style>
