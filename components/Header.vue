@@ -1,7 +1,7 @@
 <template>
     <header>
         <h1>
-            Nuxt Posts | {{ title }}
+            Nuxty Vue Posts | {{ title }}
         </h1>
         <nav>
             <ul>
